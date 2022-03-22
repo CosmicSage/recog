@@ -40,6 +40,11 @@ face_encodings = []
 face_names = []
 process_this_frame = True
 
+from sql import *
+# read curr values
+obama_time, = cur.execute('SELECT time_spent FROM presence WHERE name=?', ("Obama", )).fetchone()
+obama_time = int(obama_time[:-1])
+print(f"curr obama time is {obama_time}")
 while True:
     # Grab a single frame of video
     ret, frame = video_capture.read()
@@ -72,6 +77,10 @@ while True:
             best_match_index = np.argmin(face_distances)
             if matches[best_match_index]:
                 name = known_face_names[best_match_index]
+                if name == "Obama":
+                    obama_time += 1
+                    cur.execute("UPDATE presence SET time_spent=? WHERE name = 'Obama' ", (f"{obama_time}s",))
+                    con.commit()
 
             face_names.append(name)
 
