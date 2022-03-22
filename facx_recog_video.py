@@ -21,15 +21,17 @@ obama_face_encoding = face_recognition.face_encodings(obama_image)[0]
 # Load a second sample picture and learn how to recognize it.
 # lidaren_image = face_recognition.load_image_file("imgs/boy.jpg")
 # lidaren_face_encoding = face_recognition.face_encodings(lidaren_image)[0]
+# lidaren_image = face_recognition.load_image_file("imgs/newsom.png")
+# newsom_face_encoding = face_recognition.face_encodings(lidaren_image)[0]
 
 # Create arrays of known face encodings and their names
 known_face_encodings = [
     obama_face_encoding,
-    # lidaren_face_encoding
+    # newsom_face_encoding
 ]
 known_face_names = [
-    "Obamiee nigga",
-    # "Akbar harp"
+    "Obama",
+    # "Gavin Newsom"
 ]
 
 # Initialize some variables
@@ -61,9 +63,9 @@ while True:
             name = "Unknown"
 
             # # If a match was found in known_face_encodings, just use the first one.
-            # if True in matches:
-            #     first_match_index = matches.index(True)
-            #     name = known_face_names[first_match_index]
+            if True in matches:
+                first_match_index = matches.index(True)
+                name = known_face_names[first_match_index]
 
             # Or instead, use the known face with the smallest distance to the new face
             face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
