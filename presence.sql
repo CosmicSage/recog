@@ -4,4 +4,4 @@ CREATE TABLE presence (
     time_spent TEXT
 );
 
-INSERT INTO presence (id, name, time_spent) VALUES(abs(random()), 'Obama', '10s');
+INSERT INTO presence (id, name, time_spent) VALUES(abs(random()), 'Obama', '0s');
