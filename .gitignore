@@ -2,3 +2,4 @@ imgs/boy.jpg
 env/
 dataset/Akbarharp/*
 *.db
+__pycache__
